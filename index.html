@@ -1,439 +1,258 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portofolio Roihan Syafiq A.A</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-    /* ===== Reset & Base ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-        --black: #17171a;
-        --charcoal: #2b2b30;
-        --bg: #f0f0ee;
-        --card: #ffffff;
-        --text: #232326;
-        --muted: #78787f;
-        --border: #dcdcd9;
-        --line: #17171a;
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.75;
-        font-size: 15px;
-    }
-
-    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
-
-    .container {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 0 20px 60px;
-    }
-
-    /* ===== Header ===== */
-    header {
-        background: var(--black);
-        color: #f2f2f0;
-        text-align: center;
-        padding: 70px 20px 60px;
-    }
-    header h1 {
-        font-size: 2.3rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-    }
-    header h3 {
-        font-family: 'Inter', sans-serif;
-        font-weight: 400;
-        font-size: .85rem;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #a8a8ac;
-    }
-    header .rule {
-        width: 60px;
-        height: 1px;
-        background: #5a5a60;
-        margin: 22px auto 0;
-    }
-
-    /* ===== Navigasi ===== */
-    nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2px;
-        background: var(--card);
-        max-width: 860px;
-        margin: 0 auto 40px;
-        border-bottom: 1px solid var(--border);
-    }
-    nav a {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: .78rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        padding: 18px 16px;
-        border-bottom: 2px solid transparent;
-        transition: border-color .25s, color .25s;
-    }
-    nav a:hover { border-bottom: 2px solid var(--black); color: var(--black); }
-
-    /* ===== Section / Card ===== */
-    section {
-        background: var(--card);
-        border: 1px solid var(--border);
-        padding: 34px 36px;
-        margin-bottom: 22px;
-    }
-    section h2 {
-        font-size: 1.3rem;
-        letter-spacing: .5px;
-        margin-bottom: 6px;
-    }
-    section > h2::after {
-        content: "";
-        display: block;
-        width: 36px;
-        height: 2px;
-        background: var(--black);
-        margin: 12px 0 20px;
-    }
-    section h3 {
-        font-size: 1rem;
-        letter-spacing: .3px;
-        margin: 18px 0 8px;
-        color: var(--charcoal);
-    }
-    section p { color: var(--text); margin-bottom: 12px; }
-    section p:last-of-type { margin-bottom: 0; }
-
-    /* Clearfix khusus section profil (karena ada gambar float) */
-    #profil::after { content: ""; display: table; clear: both; }
-    #profil img {
-        float: left;
-        margin: 4px 24px 10px 0;
-        filter: grayscale(100%);
-        border: 1px solid var(--border);
-        padding: 4px;
-        background: #fff;
-    }
-
-    /* ===== Tabel Riwayat Pendidikan ===== */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 6px;
-    }
-    #pendidikan table th {
-        background: var(--black);
-        color: #f2f2f0;
-        text-align: left;
-        padding: 12px 14px;
-        font-weight: 500;
-        font-size: .75rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-    #pendidikan table td {
-        padding: 13px 14px;
-        border-bottom: 1px solid var(--border);
-        font-size: .9rem;
-    }
-    #pendidikan table tr:last-child td { border-bottom: none; }
-    #pendidikan table a { color: var(--black); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--charcoal); }
-    #pendidikan table a:hover { color: var(--muted); }
-
-    /* ===== List Keahlian & Hobi ===== */
-    #keahlian ul, #keahlian ol {
-        padding-left: 20px;
-        margin-bottom: 8px;
-    }
-    #keahlian li { margin-bottom: 6px; color: var(--text); }
-    #keahlian a { color: var(--black); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--charcoal); }
-    #keahlian a:hover { color: var(--muted); }
-
-    /* ===== Proyek: Article & Aside ===== */
-    #proyek article { margin-bottom: 20px; }
-    #proyek aside {
-        background: #f5f5f3;
-        border-left: 3px solid var(--black);
-        padding: 16px 20px;
-        font-size: .88rem;
-        color: var(--charcoal);
-    }
-    #proyek aside a { color: var(--black); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--charcoal); }
-    #proyek aside a:hover { color: var(--muted); }
-
-    /* ===== Form Kontak (gaya underline, minimal) ===== */
-    #kontak table { border-collapse: separate; border-spacing: 0 18px; }
-    #kontak td { padding: 4px 8px; font-size: .88rem; vertical-align: bottom; }
-    #kontak label {
-        font-weight: 500;
-        font-size: .75rem;
-        letter-spacing: .5px;
-        text-transform: uppercase;
-        color: var(--muted);
-    }
-
-    #kontak input[type="text"],
-    #kontak input[type="email"],
-    #kontak textarea,
-    #kontak select {
-        width: 100%;
-        padding: 8px 2px;
-        border: none;
-        border-bottom: 1px solid var(--border);
-        border-radius: 0;
-        font-family: inherit;
-        font-size: .92rem;
-        background: transparent;
-        transition: border-color .2s;
-    }
-    #kontak input:focus,
-    #kontak textarea:focus,
-    #kontak select:focus {
-        outline: none;
-        border-bottom: 1px solid var(--black);
-    }
-
-    #kontak input[type="radio"],
-    #kontak input[type="checkbox"] {
-        accent-color: var(--black);
-        margin-right: 4px;
-    }
-
-    #kontak input[type="submit"],
-    #kontak input[type="reset"] {
-        padding: 11px 26px;
-        border-radius: 0;
-        border: 1px solid var(--black);
-        font-weight: 500;
-        font-size: .78rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        cursor: pointer;
-        margin-right: 10px;
-        margin-top: 4px;
-        transition: background .2s, color .2s;
-    }
-    #kontak input[type="submit"] { background: var(--black); color: #fff; }
-    #kontak input[type="submit"]:hover { background: #fff; color: var(--black); }
-    #kontak input[type="reset"] { background: transparent; color: var(--black); }
-    #kontak input[type="reset"]:hover { background: var(--black); color: #fff; }
-
-    /* ===== Footer ===== */
-    footer {
-        text-align: center;
-        padding: 26px 20px;
-        color: var(--muted);
-        font-size: .78rem;
-        letter-spacing: .5px;
-        border-top: 1px solid var(--border);
-        margin-top: 12px;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 600px) {
-        header { padding: 50px 15px 45px; }
-        header h1 { font-size: 1.6rem; letter-spacing: 1px; }
-        nav a { font-size: .7rem; padding: 14px 10px; }
-        section { padding: 24px 20px; }
-        #profil img { float: none; display: block; margin: 0 auto 16px; }
-        #pendidikan table, #pendidikan table th, #pendidikan table td { font-size: .78rem; }
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portofolio Roihan Syafiq A.A, mahasiswa Sistem Informasi Universitas Dian Nuswantoro.">
+    <title>Roihan Syafiq A.A — Portofolio</title>
 </head>
+
 <body>
 
-    <!-- Header Halaman -->
-    <header>
-        <h1>Portofolio Roihan Syafiq A.A</h1>
-        <h3>Program Studi Sistem Informasi — Universitas Dian Nuswantoro</h3>
-        <div class="rule"></div>
-    </header>
+<header>
+    <!-- Tabel dipakai hanya untuk menata foto (kiri) dan identitas (kanan) tanpa CSS -->
+    <table width="100%" cellpadding="16" cellspacing="0">
+        <tr>
+            <td width="260" valign="top">
+                <figure>
+                    <img src="resource/WhatsApp%20Image%202026-09-28%20at%2022.38.49.jpeg"
+                         alt="Foto Roihan Syafiq A.A"
+                         width="240" height="288">
+                    <figcaption><small>Maaf, fotonya nggak seganteng di real life.</small></figcaption>
+                </figure>
+            </td>
 
-    <div class="container">
+            <td valign="middle">
+                <p><small>PORTOFOLIO MAHASISWA</small></p>
+                <h1>Roihan Syafiq A.A</h1>
+                <p><em>"Sapik"</em></p>
 
-        <!-- Navigasi Utama -->
-        <nav>
-            <a href="#profil">Profil Saya</a>
-            <a href="#pendidikan">Riwayat Pendidikan</a>
-            <a href="#keahlian">Keahlian & Hobi</a>
-            <a href="#proyek">Proyek Terkait</a>
-            <a href="#kontak">Kontak</a>
-        </nav>
+                <hr>
 
-        <!-- Bagian Profil -->
-        <section id="profil">
-            <h2>A. Profil Saya</h2>
-            <img src="resource/WhatsApp Image 2026-09-28 at 22.38.49.jpeg" alt="Maaf Foto nya ga seganteng di real life" width="150" height="180">
-            <p>
-                Halo! Nama saya Sapik. Saya adalah mahasiswa Program Studi Sistem Informasi yang memiliki ketertarikan terhadap teknologi, pemrograman, pengembangan web, serta berbagai kejadian misterius yang biasanya muncul ketika tugas sudah mendekati deadline. Saya senang mempelajari hal-hal baru dan mencoba berbagai macam teknologi, walaupun terkadang teknologi tersebut justru mempelajari cara baru untuk menguji kesabaran saya.
-            </p>
-            <p>
-                Saya merupakan pribadi yang cukup santai, tetapi sangat serius dalam menghadapi beberapa hal penting dalam kehidupan, seperti mencari Wi-Fi, menemukan charger yang hilang, dan memastikan apakah suara dari kamar sebelah benar-benar berasal dari manusia atau sesuatu yang seharusnya tidak berada di sana.
-            </p>
-            <p>
-                Dalam bidang teknologi, saya memiliki ketertarikan terhadap pemrograman dan pembuatan sistem. Saya senang mencoba membuat sesuatu dari awal, memperbaiki kesalahan, dan mencari tahu mengapa sebuah program yang lima menit lalu berjalan dengan baik tiba-tiba memutuskan untuk menghancurkan hidup saya. Dari berbagai pengalaman tersebut, saya belajar bahwa error bukanlah musuh, melainkan bagian dari perjalanan menuju kesuksesan. Walaupun terkadang error tersebut datang dengan membawa trauma.
-            </p>
-            <p>
-                Selain mengembangkan kemampuan di bidang teknologi, saya juga memiliki kemampuan khusus yang tidak tercantum dalam CV, yaitu mampu menatap layar selama berjam-jam tanpa menghasilkan apa pun, membuka file yang sama sebanyak 14 kali dengan harapan isinya berubah, serta mengetahui bahwa ada sesuatu yang salah hanya dari suara kipas laptop.
-            </p>
-            <p>
-                Saya juga sedang dalam perjalanan untuk mencapai potensi maksimal diri. Berdasarkan perhitungan yang dilakukan oleh pihak yang tidak dapat dipertanggungjawabkan secara ilmiah, aura saya saat ini berada di angka 67. Angka tersebut mungkin terlihat biasa saja, tetapi aura 67 memiliki kemampuan untuk membuat suasana menjadi sedikit lebih aneh tanpa alasan yang jelas.
-            </p>
-            <p>
-                Saya percaya bahwa setiap orang memiliki keunikan masing-masing. Ada yang memiliki bakat, ada yang memiliki prestasi, ada yang memiliki pengalaman luar biasa. Sementara itu, saya memiliki kemampuan untuk tetap terlihat tenang ketika keadaan sudah tidak masuk akal.
-            </p>
-            <p>
-                Ke depannya, saya ingin terus mengembangkan kemampuan di bidang Sistem Informasi, meningkatkan pengalaman, membuat berbagai proyek yang bermanfaat, serta menjadi seseorang yang mampu menciptakan solusi melalui teknologi.
-            </p>
-            <p>
-                Namun, masih ada beberapa tujuan yang harus diselesaikan terlebih dahulu: meningkatkan aura dari 67 menjadi 68, menemukan charger yang telah menghilang secara misterius, memahami kenapa kode bisa error padahal tidak diubah, dan mencari tahu siapa yang selalu muncul di belakang saya ketika sedang melihat kamera depan.
-                Karena pada akhirnya, saya bukan hanya seorang mahasiswa Sistem Informasi.
-            </p>
-        </section>
+                <dl>
+                    <dt><strong>NIM</strong></dt>
+                    <dd>A12.2025.07389</dd>
 
-        <!-- Bagian Pendidikan (Tabel) -->
-        <section id="pendidikan">
-            <h2>B. Riwayat Pendidikan</h2>
-            <table>
+                    <dt><strong>Program Studi</strong></dt>
+                    <dd>Sistem Informasi (S1)</dd>
+
+                    <dt><strong>Universitas</strong></dt>
+                    <dd>Universitas Dian Nuswantoro</dd>
+
+                    <dt><strong>Angkatan</strong></dt>
+                    <dd>2025</dd>
+                </dl>
+            </td>
+        </tr>
+    </table>
+
+    <nav aria-label="Navigasi utama">
+        <a href="#profil">Profil</a> ·
+        <a href="#pendidikan">Pendidikan</a> ·
+        <a href="#keahlian">Keahlian &amp; Hobi</a> ·
+        <a href="#proyek">Proyek</a> ·
+        <a href="#kontak">Kontak</a>
+    </nav>
+</header>
+
+<hr>
+
+<main>
+
+    <!-- PROFIL -->
+    <section id="profil">
+        <h2>Profil</h2>
+
+        <h3>Tentang Saya</h3>
+        <p>
+            Halo! Nama saya Sapik. Saya adalah mahasiswa Program Studi Sistem Informasi yang memiliki ketertarikan terhadap teknologi, pemrograman, pengembangan web, serta berbagai kejadian misterius yang biasanya muncul ketika tugas sudah mendekati deadline. Saya senang mempelajari hal-hal baru dan mencoba berbagai macam teknologi, walaupun terkadang teknologi tersebut justru mempelajari cara baru untuk menguji kesabaran saya.
+        </p>
+        <p>
+            Saya merupakan pribadi yang cukup santai, tetapi sangat serius dalam menghadapi beberapa hal penting dalam kehidupan, seperti mencari Wi-Fi, menemukan charger yang hilang, dan memastikan apakah suara dari kamar sebelah benar-benar berasal dari manusia atau sesuatu yang seharusnya tidak berada di sana.
+        </p>
+
+        <h3>Di Bidang Teknologi</h3>
+        <p>
+            Saya memiliki ketertarikan terhadap pemrograman dan pembuatan sistem. Saya senang mencoba membuat sesuatu dari awal, memperbaiki kesalahan, dan mencari tahu mengapa sebuah program yang lima menit lalu berjalan dengan baik tiba-tiba memutuskan untuk menghancurkan hidup saya. Dari berbagai pengalaman tersebut, saya belajar bahwa error bukanlah musuh, melainkan bagian dari perjalanan menuju kesuksesan. Walaupun terkadang error tersebut datang dengan membawa trauma.
+        </p>
+        <p>
+            Saya juga memiliki kemampuan khusus yang tidak tercantum dalam CV, yaitu mampu menatap layar selama berjam-jam tanpa menghasilkan apa pun, membuka file yang sama sebanyak 14 kali dengan harapan isinya berubah, serta mengetahui bahwa ada sesuatu yang salah hanya dari suara kipas laptop.
+        </p>
+
+        <h3>Aura &amp; Filosofi</h3>
+        <p>
+            Saya sedang dalam perjalanan untuk mencapai potensi maksimal diri. Berdasarkan perhitungan yang dilakukan oleh pihak yang tidak dapat dipertanggungjawabkan secara ilmiah, aura saya saat ini berada di angka 67. Angka tersebut mungkin terlihat biasa saja, tetapi aura 67 memiliki kemampuan untuk membuat suasana menjadi sedikit lebih aneh tanpa alasan yang jelas.
+        </p>
+        <blockquote>
+            <p>
+                Setiap orang memiliki keunikan masing-masing. Ada yang memiliki bakat, ada yang memiliki prestasi, ada yang memiliki pengalaman luar biasa. Sementara itu, saya memiliki kemampuan untuk tetap terlihat tenang ketika keadaan sudah tidak masuk akal.
+            </p>
+        </blockquote>
+
+        <h3>Tujuan ke Depan</h3>
+        <p>
+            Saya ingin terus mengembangkan kemampuan di bidang Sistem Informasi, meningkatkan pengalaman, membuat berbagai proyek yang bermanfaat, serta menjadi seseorang yang mampu menciptakan solusi melalui teknologi. Namun, masih ada beberapa tujuan yang harus diselesaikan terlebih dahulu:
+        </p>
+        <ol>
+            <li>Meningkatkan aura dari 67 menjadi 68.</li>
+            <li>Menemukan charger yang telah menghilang secara misterius.</li>
+            <li>Memahami kenapa kode bisa error padahal tidak diubah.</li>
+            <li>Mencari tahu siapa yang selalu muncul di belakang saya ketika sedang melihat kamera depan.</li>
+        </ol>
+        <p>
+            Karena pada akhirnya, saya bukan hanya seorang mahasiswa Sistem Informasi.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- PENDIDIKAN -->
+    <section id="pendidikan">
+        <h2>Riwayat Pendidikan</h2>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
                 <tr>
-                    <th>Tingkat Pendidikan</th>
-                    <th>Nama Instansi / Sekolah</th>
-                    <th>Tahun</th>
-                    <th>Keterangan</th>
+                    <th scope="col">Jenjang</th>
+                    <th scope="col">Institusi</th>
+                    <th scope="col">Periode</th>
+                    <th scope="col">Keterangan</th>
                 </tr>
+            </thead>
+            <tbody>
                 <tr>
-                    <td>Sekolah Menengah Atas (SMA)</td>
+                    <td>SMA</td>
                     <td>SMAN 1 Bulakamba</td>
-                    <td>2022 - 2025</td>
+                    <td>2022 – 2025</td>
                     <td>Jurusan IPA</td>
                 </tr>
                 <tr>
-                    <td>Perguruan Tinggi (S1)</td>
-                    <td><a href="http://www.dinus.ac.id" target="_blank">Universitas Dian Nuswantoro</a></td>
-                    <td>2025 - 2030</td>
+                    <td>S1</td>
+                    <td><a href="http://www.dinus.ac.id" target="_blank" rel="noopener">Universitas Dian Nuswantoro</a></td>
+                    <td>2025 – 2030</td>
                     <td>Sistem Informasi</td>
                 </tr>
-            </table>
-        </section>
+            </tbody>
+        </table>
+    </section>
 
-        <!-- Bagian Keahlian & Hobi -->
-        <section id="keahlian">
-            <h2>C. Keahlian & Hobi</h2>
+    <hr>
 
-            <h3>1. Keahlian Utama</h3>
-            <ul>
-                <li>Menggambar</li>
-                <li>Jemping sepeda</li>
-                <li>Bisa menggunakan cisco</li>
-            </ul>
+    <!-- KEAHLIAN & HOBI -->
+    <section id="keahlian">
+        <h2>Keahlian &amp; Hobi</h2>
 
-            <h3>2. Hobi & Minat</h3>
-            <ol>
-                <li>Mendengarkan musik<a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
-                <li>Olah raga</li>
-                <li>Bermain gitar</li>
-            </ol>
-        </section>
+        <h3>Keahlian</h3>
+        <ul>
+            <li>Menggambar</li>
+            <li>videografi</li>
+            <li>fotografi</li>
+        </ul>
 
-        <!-- Bagian Proyek -->
-        <section id="proyek">
-            <h2>D. Proyek & Aktivitas Akademik</h2>
+        <h3>Hobi &amp; Minat</h3>
+        <ul>
+            <li>Mendengarkan musik</li>
+            <li>Olah raga</li>
+            <li>Bermain gitar</li>
+        </ul>
 
-            <article>
-                <h3>Tugas Pemrograman Web 1</h3>
+        <p>
+            Referensi belajar:
+            <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- PROYEK -->
+    <section id="proyek">
+        <h2>Proyek &amp; Aktivitas Akademik</h2>
+
+        <article>
+            <h3>Tugas Pemrograman Web 1</h3>
+            <p>
+                Pembuatan halaman profil dan form interaktif menggunakan elemen semantik HTML, tabel terstruktur, dan berbagai elemen input form.
+            </p>
+        </article>
+
+        <aside>
+            <p>
+                <strong>Catatan kampus:</strong>
+                jadwal perkuliahan dan kurikulum dapat dilihat di portal
+                <a href="https://mhs.dinus.ac.id" target="_blank" rel="noopener">Siadin Udinus</a>.
+            </p>
+        </aside>
+    </section>
+
+    <hr>
+
+    <!-- KONTAK -->
+    <section id="kontak">
+        <h2>Kontak</h2>
+        <p>Silakan isi form berikut untuk mengirimkan pesan.</p>
+
+        <form action="simpan.php" method="post">
+            <fieldset>
+                <legend>Data Pengunjung</legend>
+
                 <p>
-                    Proyek ini adalah pembuatan halaman profil dan form interaktif menggunakan
-                    struktur elemen semantik HTML, tabel terstruktur, dan beberapa elemen input form.
+                    <label for="fnama">Nama lengkap</label><br>
+                    <input type="text" id="fnama" name="fnama" size="32" required>
                 </p>
-            </article>
 
-            <aside>
-                <p><b>Catatan Kampus:</b> Informasi jadwal perkuliahan dan kurikulum dapat dilihat di portal
-                <a href="https://mhs.dinus.ac.id" target="_blank">Siadin Udinus</a>.</p>
-            </aside>
-        </section>
+                <p>
+                    <label for="femail">Email</label><br>
+                    <input type="email" id="femail" name="femail" size="32" required>
+                </p>
 
-        <!-- Bagian Form Kontak -->
-        <section id="kontak">
-            <h2>E. Form Kontak Pengunjung</h2>
-            <p>Silakan isi form di bawah ini untuk mengirimkan pesan:</p>
+                <p>
+                    Jenis kelamin<br>
+                    <input type="radio" id="pria" name="fjkel" value="Pria">
+                    <label for="pria">Pria</label>
+                    <input type="radio" id="wanita" name="fjkel" value="Wanita">
+                    <label for="wanita">Wanita</label>
+                </p>
 
-            <form action="simpan.php" method="post">
-                <table>
-                    <tr>
-                        <td><label for="fnama">Nama Lengkap</label></td>
-                        <td><input type="text" id="fnama" name="fnama" size="30" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="femail">Email</label></td>
-                        <td><input type="email" id="femail" name="femail" size="30" required></td>
-                    </tr>
-                    <tr>
-                        <td>Jenis Kelamin</td>
-                        <td>
-                            <input type="radio" id="pria" name="fjkel" value="Pria">
-                            <label for="pria">Pria</label>
-                            <input type="radio" id="wanita" name="fjkel" value="Wanita">
-                            <label for="wanita">Wanita</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="fprodi">Program Studi</label></td>
-                        <td>
-                            <select id="fprodi" name="fprodi">
-                                <option value="SI">Sistem Informasi S1</option>
-                                <option value="TI">Teknik Informatika S1</option>
-                                <option value="DKV">Desain Komunikasi Visual S1</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Hobi / Minat</td>
-                        <td>
-                            <input type="checkbox" id="coding" name="fhobi[]" value="Coding">
-                            <label for="coding">Coding</label>
-                            <input type="checkbox" id="reading" name="fhobi[]" value="Membaca">
-                            <label for="reading">Membaca</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="fpesan">Pesan</label></td>
-                        <td>
-                            <textarea id="fpesan" name="fpesan" rows="4" cols="32"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" value="Kirim Pesan">
-                            <input type="reset" value="Batal">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </section>
+                <p>
+                    <label for="fprodi">Program studi</label><br>
+                    <select id="fprodi" name="fprodi">
+                        <option value="SI">Sistem Informasi S1</option>
+                        <option value="TI">Teknik Informatika S1</option>
+                        <option value="DKV">Desain Komunikasi Visual S1</option>
+                    </select>
+                </p>
 
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2026 Roihan Syafiq A.A — Pemrograman Web Sistem Informasi Universitas Dian Nuswantoro</p>
-        </footer>
+                <p>
+                    Hobi / minat<br>
+                    <input type="checkbox" id="coding" name="fhobi[]" value="Coding">
+                    <label for="coding">Coding</label>
+                    <input type="checkbox" id="reading" name="fhobi[]" value="Membaca">
+                    <label for="reading">Membaca</label>
+                </p>
+            </fieldset>
 
-    </div>
+            <fieldset>
+                <legend>Pesan</legend>
+                <p>
+                    <label for="fpesan" hidden>Pesan</label>
+                    <textarea id="fpesan" name="fpesan" rows="5" cols="40"></textarea>
+                </p>
+            </fieldset>
+
+            <p>
+                <input type="submit" value="Kirim Pesan">
+                <input type="reset" value="Batal">
+            </p>
+        </form>
+    </section>
+
+</main>
+
+<hr>
+
+<footer>
+    <p><small>&copy; 2026 Roihan Syafiq A.A · Pemrograman Web, Sistem Informasi, Universitas Dian Nuswantoro</small></p>
+</footer>
+
 </body>
 </html>
